@@ -2,7 +2,34 @@
 
 namespace AlibabaCloud\Ccs\V20171001;
 
+use AlibabaCloud\ApiResolverTrait;
 use AlibabaCloud\Rpc;
+
+/**
+ * Resolve Api based on the method name.
+ *
+ * @method GetHotlineRecord getHotlineRecord(array $options = [])
+ * @method QueryHotlineRecord queryHotlineRecord(array $options = [])
+ * @method QueryServiceRecord queryServiceRecord(array $options = [])
+ * @method GetServiceRecord getServiceRecord(array $options = [])
+ * @method ProceedTicket proceedTicket(array $options = [])
+ * @method QueryRobotSession queryRobotSession(array $options = [])
+ * @method LastRobotSession lastRobotSession(array $options = [])
+ * @method EvaluateRobotSession evaluateRobotSession(array $options = [])
+ * @method CreateRobotSession createRobotSession(array $options = [])
+ * @method CloseRobotSession closeRobotSession(array $options = [])
+ * @method ChatRobotSession chatRobotSession(array $options = [])
+ * @method AssumeOss assumeOss(array $options = [])
+ * @method CheckInspectAudio checkInspectAudio(array $options = [])
+ * @method CheckInspectText checkInspectText(array $options = [])
+ * @method GetInspectResult getInspectResult(array $options = [])
+ * @method CreateTicket createTicket(array $options = [])
+ * @method QueryTicket queryTicket(array $options = [])
+ */
+class CcsApiResolver
+{
+    use ApiResolverTrait;
+}
 
 class V20171001Rpc extends Rpc
 {
@@ -240,18 +267,18 @@ class CheckInspectText extends V20171001Rpc
 {
 
     /**
-     * @param array $value
+     * @param array $sentence
      *
      * @return $this
      */
-    public function withSentence(array $value)
+    public function withSentence(array $sentence)
     {
-        $this->data['Sentence'] = $value;
-        foreach ($value as $i => $iValue) {
-            $this->options['query']['Sentence.' . ($i + 1) . '.Speaker'] = $value[$i]['Speaker'];
-            $this->options['query']['Sentence.' . ($i + 1) . '.EndTime'] = $value[$i]['EndTime'];
-            $this->options['query']['Sentence.' . ($i + 1) . '.StartTime'] = $value[$i]['StartTime'];
-            $this->options['query']['Sentence.' . ($i + 1) . '.Content'] = $value[$i]['Content'];
+        $this->data['Sentence'] = $sentence;
+        foreach ($sentence as $depth1 => $depth1Value) {
+            $this->options['query']['Sentence.' . ($depth1 + 1) . '.Speaker'] = $depth1Value['Speaker'];
+            $this->options['query']['Sentence.' . ($depth1 + 1) . '.EndTime'] = $depth1Value['EndTime'];
+            $this->options['query']['Sentence.' . ($depth1 + 1) . '.StartTime'] = $depth1Value['StartTime'];
+            $this->options['query']['Sentence.' . ($depth1 + 1) . '.Content'] = $depth1Value['Content'];
         }
 
         return $this;
